@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'injection_container.dart' as di;
 import 'presentation/providers/university_provider.dart';
-
-// import 'presentation/screens/home_screen.dart';
+import 'presentation/screens/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +33,7 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: false,
         ),
-        home: const Scaffold(body: Center(child: Text("Building..."))),
+        home: const HomeScreen(),
       ),
     );
   }
