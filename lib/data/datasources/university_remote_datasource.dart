@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import '../models/university_model.dart';
+import '../../core/constants/api_constants.dart';
 
 abstract class UniversityRemoteDataSource {
   Future<List<UniversityModel>> getUniversities();
@@ -13,7 +14,8 @@ class UniversityRemoteDataSourceImpl implements UniversityRemoteDataSource {
   @override
   Future<List<UniversityModel>> getUniversities() async {
     try {
-      final response = await dio.get('https://tyba-assets.s3.amazonaws.com/FE-Engineer-test/universities.json');
+      // Usamos la constante en lugar de un String directo
+      final response = await dio.get(ApiConstants.universitiesUrl);
 
       if (response.statusCode == 200) {
         final List<dynamic> data = response.data;
