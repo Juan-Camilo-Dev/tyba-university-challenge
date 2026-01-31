@@ -84,15 +84,19 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildGridView(UniversityProvider provider) {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2, // 2 columnas
-        childAspectRatio: 0.8, // Relación de aspecto
+        crossAxisCount: 2,
+        childAspectRatio: 0.85, // Ajusté un poco el ratio para que no se vean tan estiradas
+        crossAxisSpacing: 10,   // Espacio horizontal entre tarjetas
+        mainAxisSpacing: 10,    // Espacio vertical entre tarjetas
       ),
+      padding: const EdgeInsets.all(10), // Padding general de la grilla
       itemCount: provider.displayedUniversities.length,
       itemBuilder: (context, index) {
         final uni = provider.displayedUniversities[index];
         return UniversityCard(
           university: uni,
           onTap: () => _navigateToDetail(context, uni),
+          isGrid: true,
         );
       },
     );
