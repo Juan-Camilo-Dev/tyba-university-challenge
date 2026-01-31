@@ -27,12 +27,20 @@ class UniversityProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _allUniversities = await getUniversities();
+      // CORRECCIÓN AQUÍ:
+      // Obtenemos los modelos
+      final result = await getUniversities();
+
+      // FORZAMOS la creación de una nueva lista genérica de University.
+      // Esto "rompe" la restricción de que sea solo de Models.
+      _allUniversities = List<University>.from(result);
+
       _currentPage = 0;
       displayedUniversities = [];
-      _loadNextPage(); // Carga los primeros 20
+      _loadNextPage();
     } catch (e) {
-      errorMessage = "No se pudieron cargar las universidades. Revisa tu conexión.";
+      errorMessage = "No se pudieron cargar las universidades.";
+      // print(e); // Descomenta si necesitas ver el error en consola
     } finally {
       isLoading = false;
       notifyListeners();
