@@ -6,7 +6,7 @@ class University extends Equatable {
   final String alphaTwoCode;
   final List<String> domains;
   final List<String> webPages;
-  // Campos extra para el requerimiento de Tyba (se llenan después)
+  // Campos extra
   final String? imagePath;
   final int? studentCount;
 
@@ -20,7 +20,7 @@ class University extends Equatable {
     this.studentCount,
   });
 
-  // Método para crear una copia modificada (útil para actualizar imagen/estudiantes)
+  // Método para crear una copia modificada (Para actualizar imagen y/o estudiantes)
   University copyWith({
     String? name,
     String? country,
